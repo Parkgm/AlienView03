@@ -9,17 +9,38 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    var counter = 1
+    var direction = true
+    
+    
+    @IBOutlet weak var alien_Image_View: UIImageView!
+    @IBOutlet weak var alienImageNumber: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    //1st 이미지가 출력
+     alien_Image_View.image = UIImage(named: "frame1.png")
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+   
+    @IBAction func update_image(_ sender: UIButton) {
+        
+        if counter == 5 {
+            direction = false
+        } else if counter == 1{
+            direction = true
+        }
+        
+        if direction == true {
+            counter += 1
+        } else if direction == false {
+            counter -= 1
+        }
+        
+        alienImageNumber.text = "\(counter)"
+        alien_Image_View.image = UIImage(named: "frame\(counter).png")
     }
-
-
+    
 }
 
